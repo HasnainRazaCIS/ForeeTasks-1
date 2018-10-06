@@ -24,12 +24,12 @@ def logrequest(data, ans):
     data['result'] = ans
     logs.insert_one(data)
     print("Logged req : {0}".format(data))
+    recentlog(data)
 
 # Task6 Part 2
 # Used $push and $each,$slice,$sort modifiers in combination to log only 4 recent
 # requests of each type of operation
-def recentlog(data, ans):
-    data['result'] = ans
+def recentlog(data):
     print("req object at /recentlogs",data)
     try:
         if lastlogs.find_one({"op": data["op"]}) is None:
@@ -82,7 +82,6 @@ def calculator_api():
         resp = {"result": ans}
         # save request to mongodb logs
         logrequest(data,ans)
-        recentlog(data,ans)
     except:
         resp = {"result": "Bad json object"}
 
