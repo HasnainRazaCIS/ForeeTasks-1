@@ -29,6 +29,19 @@ def logrequest(data, ans):
 # Task6 Part 2
 # Used $push and $each,$slice,$sort modifiers in combination to log only 4 recent
 # requests of each type of operation
+# last_operations collection structure : 
+#   {
+#       { "op": '+',
+#         "logs": [
+#                    {'op':'+', 'op1':7, 'op2':3, 'result':10, "_id":{"$oid": ObjectID(2AB3..)}}
+#                 ]
+#       }
+#       { "op": '-',
+#         "logs": [
+#                    {'op':'-', 'op1':7, 'op2':3, 'result'4:, "_id":{"$oid": ObjectID(2YI3..)}}
+#                 ]
+#       }
+#   }
 def recentlog(data):
     print("req object at /recentlogs",data)
     try:
